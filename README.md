@@ -1,10 +1,10 @@
 # Comparable
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laragear/mail-login.svg)](https://packagist.org/packages/laragear/mail-login)
-[![Latest stable test run](https://github.com/Laragear/MailLogin/workflows/Tests/badge.svg)](https://github.com/Laragear/MailLogin/actions)
-[![Codecov coverage](https://codecov.io/gh/Laragear/MailLogin/branch/1.x/graph/badge.svg?token=TODO:TOKEN)](https://codecov.io/gh/Laragear/MailLogin)
-[![CodeClimate Maintainability](https://api.codeclimate.com/v1/badges/TODO:TOKEN/maintainability)](https://codeclimate.com/github/Laragear/MailLogin/maintainability)
-[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=Laragear_MailLogin&metric=alert_status)](https://sonarcloud.io/dashboard?id=Laragear_MailLogin)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/laragear/compare.svg)](https://packagist.org/packages/laragear/compare)
+[![Latest stable test run](https://github.com/Laragear/Compare/workflows/Tests/badge.svg)](https://github.com/Laragear/Compare/actions)
+[![Codecov coverage](https://codecov.io/gh/Laragear/Compare/branch/1.x/graph/badge.svg?token=TODO:TOKEN)](https://codecov.io/gh/Laragear/Compare)
+[![CodeClimate Maintainability](https://api.codeclimate.com/v1/badges/TODO:TOKEN/maintainability)](https://codeclimate.com/github/Laragear/Compare/maintainability)
+[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=Laragear_Compare&metric=alert_status)](https://sonarcloud.io/dashboard?id=Laragear_Compare)
 [![Laravel Octane Compatibility](https://img.shields.io/badge/Laravel%20Octane-Compatible-success?style=flat&logo=laravel)](https://laravel.com/docs/9.x/octane#introduction)
 
 Small utility trait to fluently compare object values.
