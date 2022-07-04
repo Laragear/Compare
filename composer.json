@@ -1,0 +1,67 @@
+{
+    "name": "laragear/compare",
+    "description": "Small utility trait to fluently compare object values.",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "keywords": [
+        "laravel",
+        "comparing"
+    ],
+    "authors": [
+        {
+            "name": "Italo Israel Baeza Cabrera",
+            "email": "darkghosthunter@gmail.com",
+            "homepage": "https://patreon.com/packagesforlaravel"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/Laragear/Compare",
+        "issues": "https://github.com/Laragear/Compare/issues"
+    },
+    "require": {
+        "php": ">=8.0",
+        "illuminate/support": "9.*"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.5",
+        "orchestra/testbench": "7.*",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laragear\\Compare\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --coverage-clover build/logs/clover.xml",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "funding": [
+        {
+            "type": "Patreon",
+            "url": "https://patreon.com/PackagesForLaravel"
+        },
+        {
+            "type": "Ko-Fi",
+            "url": "https://ko-fi.com/DarkGhostHunter"
+        },
+        {
+            "type": "Buy me a cofee",
+            "url": "https://www.buymeacoffee.com/darkghosthunter"
+        },
+        {
+            "type": "Paypal",
+            "url": "https://paypal.me/darkghosthunter"
+        }
+    ]
+}
