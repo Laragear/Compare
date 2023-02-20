@@ -21,13 +21,11 @@
         "issues": "https://github.com/Laragear/Compare/issues"
     },
     "require": {
-        "php": ">=8.0",
-        "illuminate/support": "9.*"
+        "php": "8.*",
+        "illuminate/support": "9.*|10.*"
     },
     "require-dev": {
-        "mockery/mockery": "^1.5",
-        "orchestra/testbench": "7.*",
-        "phpunit/phpunit": "^9.5"
+        "orchestra/testbench": "^7.22|8.*"
     },
     "autoload": {
         "psr-4": {
