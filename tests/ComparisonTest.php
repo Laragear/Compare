@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Error;
 use Laragear\Compare\Comparable;
 use PHPUnit\Framework\TestCase;
 
@@ -37,6 +38,12 @@ class ComparisonTest extends TestCase
         };
     }
 
+    public function test_dynamic_inverse(): void
+    {
+        static::assertTrue($this->comparable->is('invalid')->blank());
+        static::assertFalse($this->comparable->is('invalid')->not->blank());
+    }
+
     public function test_blank(): void
     {
         static::assertTrue($this->comparable->is('invalid')->blank());
@@ -47,6 +54,15 @@ class ComparisonTest extends TestCase
 
         static::assertFalse($this->comparable->is('compare.string')->blank());
         static::assertTrue($this->comparable->is('compare.string')->not()->blank());
+
+        static::assertTrue($this->comparable->is('invalid')->blank);
+        static::assertFalse($this->comparable->is('invalid')->not()->blank);
+
+        static::assertTrue($this->comparable->is('compare.blank')->blank);
+        static::assertFalse($this->comparable->is('compare.blank')->not()->blank);
+
+        static::assertFalse($this->comparable->is('compare.string')->blank);
+        static::assertTrue($this->comparable->is('compare.string')->not()->blank);
     }
 
     public function test_filled(): void
@@ -59,6 +75,15 @@ class ComparisonTest extends TestCase
 
         static::assertTrue($this->comparable->is('compare.string')->filled());
         static::assertFalse($this->comparable->is('compare.string')->not()->filled());
+
+        static::assertFalse($this->comparable->is('invalid')->filled);
+        static::assertTrue($this->comparable->is('invalid')->not()->filled);
+
+        static::assertFalse($this->comparable->is('compare.blank')->filled);
+        static::assertTrue($this->comparable->is('compare.blank')->not()->filled);
+
+        static::assertTrue($this->comparable->is('compare.string')->filled);
+        static::assertFalse($this->comparable->is('compare.string')->not()->filled);
     }
 
     public function test_true(): void
@@ -71,6 +96,15 @@ class ComparisonTest extends TestCase
 
         static::assertFalse($this->comparable->is('compare.string')->true());
         static::assertTrue($this->comparable->is('compare.string')->not()->true());
+
+        static::assertFalse($this->comparable->is('invalid')->true);
+        static::assertTrue($this->comparable->is('invalid')->not()->true);
+
+        static::assertTrue($this->comparable->is('compare.bool')->true);
+        static::assertFalse($this->comparable->is('compare.bool')->not()->true);
+
+        static::assertFalse($this->comparable->is('compare.string')->true);
+        static::assertTrue($this->comparable->is('compare.string')->not()->true);
     }
 
     public function test_truthy(): void
@@ -86,6 +120,18 @@ class ComparisonTest extends TestCase
 
         static::assertFalse($this->comparable->is('compare.false')->truthy());
         static::assertTrue($this->comparable->is('compare.false')->not()->truthy());
+
+        static::assertFalse($this->comparable->is('invalid')->truthy);
+        static::assertTrue($this->comparable->is('invalid')->not()->truthy);
+
+        static::assertTrue($this->comparable->is('compare.bool')->truthy);
+        static::assertFalse($this->comparable->is('compare.bool')->not()->truthy);
+
+        static::assertTrue($this->comparable->is('compare.string')->truthy);
+        static::assertFalse($this->comparable->is('compare.string')->not()->truthy);
+
+        static::assertFalse($this->comparable->is('compare.false')->truthy);
+        static::assertTrue($this->comparable->is('compare.false')->not()->truthy);
     }
 
     public function test_false(): void
@@ -98,6 +144,15 @@ class ComparisonTest extends TestCase
 
         static::assertFalse($this->comparable->is('compare.bool')->false());
         static::assertTrue($this->comparable->is('compare.bool')->not()->false());
+
+        static::assertFalse($this->comparable->is('invalid')->false);
+        static::assertTrue($this->comparable->is('invalid')->not()->false);
+
+        static::assertTrue($this->comparable->is('compare.false')->false);
+        static::assertFalse($this->comparable->is('compare.false')->not()->false);
+
+        static::assertFalse($this->comparable->is('compare.bool')->false);
+        static::assertTrue($this->comparable->is('compare.bool')->not()->false);
     }
 
     public function test_falsy(): void
@@ -113,6 +168,18 @@ class ComparisonTest extends TestCase
 
         static::assertTrue($this->comparable->is('compare.false')->falsy());
         static::assertFalse($this->comparable->is('compare.false')->not()->falsy());
+
+        static::assertTrue($this->comparable->is('invalid')->falsy);
+        static::assertFalse($this->comparable->is('invalid')->not()->falsy);
+
+        static::assertTrue($this->comparable->is('compare.false')->falsy);
+        static::assertFalse($this->comparable->is('compare.false')->not()->falsy);
+
+        static::assertTrue($this->comparable->is('compare.blank')->falsy);
+        static::assertFalse($this->comparable->is('compare.blank')->not()->falsy);
+
+        static::assertTrue($this->comparable->is('compare.false')->falsy);
+        static::assertFalse($this->comparable->is('compare.false')->not()->falsy);
     }
 
     public function test_null(): void
@@ -125,6 +192,15 @@ class ComparisonTest extends TestCase
 
         static::assertFalse($this->comparable->is('compare.string')->null());
         static::assertTrue($this->comparable->is('compare.string')->not()->null());
+
+        static::assertTrue($this->comparable->is('invalid')->null);
+        static::assertFalse($this->comparable->is('invalid')->not()->null);
+
+        static::assertTrue($this->comparable->is('compare.null')->null);
+        static::assertFalse($this->comparable->is('compare.null')->not()->null);
+
+        static::assertFalse($this->comparable->is('compare.string')->null);
+        static::assertTrue($this->comparable->is('compare.string')->not()->null);
     }
 
     public function test_exactly(): void
@@ -152,6 +228,21 @@ class ComparisonTest extends TestCase
 
         static::assertTrue($this->comparable->is('compare.zeroes.2')->zero());
         static::assertFalse($this->comparable->is('compare.zeroes.2')->not()->zero());
+
+        static::assertFalse($this->comparable->is('invalid')->zero);
+        static::assertTrue($this->comparable->is('invalid')->not()->zero);
+
+        static::assertFalse($this->comparable->is('compare.empty')->zero);
+        static::assertTrue($this->comparable->is('compare.empty')->not()->zero);
+
+        static::assertFalse($this->comparable->is('compare.zeroes.0')->zero);
+        static::assertTrue($this->comparable->is('compare.zeroes.0')->not()->zero);
+
+        static::assertTrue($this->comparable->is('compare.zeroes.1')->zero);
+        static::assertFalse($this->comparable->is('compare.zeroes.1')->not()->zero);
+
+        static::assertTrue($this->comparable->is('compare.zeroes.2')->zero);
+        static::assertFalse($this->comparable->is('compare.zeroes.2')->not()->zero);
     }
 
     public function test_counting(): void
@@ -162,7 +253,7 @@ class ComparisonTest extends TestCase
 
     public function test_counting_fails_on_non_countable(): void
     {
-        $this->expectError();
+        $this->expectException(Error::class);
 
         $this->comparable->is('invalid')->counting(1);
     }
@@ -195,6 +286,18 @@ class ComparisonTest extends TestCase
 
         static::assertTrue($this->comparable->is('compare.float')->aboveZero());
         static::assertFalse($this->comparable->is('compare.float')->not()->aboveZero());
+
+        static::assertFalse($this->comparable->is('invalid')->aboveZero);
+        static::assertTrue($this->comparable->is('invalid')->not()->aboveZero);
+
+        static::assertTrue($this->comparable->is('compare.nested.items')->aboveZero);
+        static::assertFalse($this->comparable->is('compare.nested.items')->not()->aboveZero);
+
+        static::assertTrue($this->comparable->is('compare.number')->aboveZero);
+        static::assertFalse($this->comparable->is('compare.number')->not()->aboveZero);
+
+        static::assertTrue($this->comparable->is('compare.float')->aboveZero);
+        static::assertFalse($this->comparable->is('compare.float')->not()->aboveZero);
     }
 
     public function test_equal_or_greater_than(): void
@@ -267,6 +370,18 @@ class ComparisonTest extends TestCase
 
         static::assertTrue($this->comparable->is('compare.negative.float')->belowZero());
         static::assertFalse($this->comparable->is('compare.negative.float')->not()->belowZero());
+
+        static::assertFalse($this->comparable->is('invalid')->belowZero);
+        static::assertTrue($this->comparable->is('invalid')->not()->belowZero);
+
+        static::assertFalse($this->comparable->is('compare.nested.items')->belowZero);
+        static::assertTrue($this->comparable->is('compare.nested.items')->not()->belowZero);
+
+        static::assertTrue($this->comparable->is('compare.negative.number')->belowZero);
+        static::assertFalse($this->comparable->is('compare.negative.number')->not()->belowZero);
+
+        static::assertTrue($this->comparable->is('compare.negative.float')->belowZero);
+        static::assertFalse($this->comparable->is('compare.negative.float')->not()->belowZero);
     }
 
     public function test_containing(): void
@@ -288,11 +403,17 @@ class ComparisonTest extends TestCase
 
         static::assertFalse($this->comparable->is('compare.nested.items')->containingOneItem());
         static::assertTrue($this->comparable->is('compare.nested.items')->not()->containingOneItem());
+
+        static::assertTrue($this->comparable->is('compare.nested')->containingOneItem);
+        static::assertFalse($this->comparable->is('compare.nested')->not()->containingOneItem);
+
+        static::assertFalse($this->comparable->is('compare.nested.items')->containingOneItem);
+        static::assertTrue($this->comparable->is('compare.nested.items')->not()->containingOneItem);
     }
 
     public function test_containing_one_item_fails_if_not_countable(): void
     {
-        $this->expectError();
+        $this->expectException(Error::class);
 
         $this->comparable->is('invalid')->containingOneItem();
     }

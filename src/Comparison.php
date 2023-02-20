@@ -13,6 +13,20 @@ use function is_iterable;
 use function is_string;
 use function iterator_to_array;
 
+/**
+ * @property-read $this $not
+ * @property-read bool $blank
+ * @property-read bool $filled
+ * @property-read bool $true
+ * @property-read bool $truthy
+ * @property-read bool $false
+ * @property-read bool $falsy
+ * @property-read bool $null
+ * @property-read bool $zero
+ * @property-read bool $aboveZero
+ * @property-read bool $belowZero
+ * @property-read bool $containingOneItem
+ */
 class Comparison
 {
     /**
@@ -283,5 +297,16 @@ class Comparison
             : $value > $min && $value < $max;
 
         return $this->compare === $result;
+    }
+
+    /**
+     * Dynamically make calls to parameter-less methods.
+     *
+     * @param  string  $name
+     * @return mixed
+     */
+    public function __get(string $name)
+    {
+        return $this->{$name}();
     }
 }

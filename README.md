@@ -73,10 +73,10 @@ if ($wallet->is('pending.total')->aboveZero()) {
 }
 ```
 
-To negate a condition, just issue `not()`.
+To negate a condition, just issue `not()`, or the `not` property.
 
 ```php
-if ($wallet->is('pending.total')->not()->belowZero()) {
+if ($wallet->is('pending.total')->not->belowZero()) {
     return 'If you dont have credits, we can lend you some.';
 }
 ```
@@ -295,7 +295,6 @@ if ($product->is('address')->true()) {
 }
 ```
 
-
 ### `zero()`
 
 Check if the numeric value, or the list items count, is exactly zero.
@@ -309,6 +308,17 @@ if ($cart->is('items')->zero()) {
     return 'Your cart is empty.';
 }
 ```
+
+## Higher Order Comparisons
+
+You can access to a comparison result using dynamic properties:
+
+|                   |                  |                              |
+|-------------------|------------------|------------------------------|
+| `$object->blank`  | `$object->false` | `$object->aboveZero`         |
+| `$object->filled` | `$object->falsy` | `$object->belowZero`         |
+| `$object->true`   | `$object->null`  | `$object->containingOneItem` |
+| `$object->truthy` | `$object->zero`  |                              |
 
 ## Laravel Octane compatibility
 
