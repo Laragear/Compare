@@ -1,3 +1,7 @@
+Modern PHP has very flexible Comparison Operators, so this package is no longer needed.
+
+---
+
 # Comparable
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laragear/compare.svg)](https://packagist.org/packages/laragear/compare)
