@@ -1,4 +1,4 @@
-Modern PHP has very flexible Comparison Operators, so this package is no longer needed.
+# Modern PHP has very flexible Comparison Operators, so this package is no longer needed.
 
 ---
 
